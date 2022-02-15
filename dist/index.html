@@ -3,9 +3,74 @@
   <head>
     <meta charset="utf-8" />
     <title>ToDo List</title>
+    <script src="./main.js" defer></script>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
   </head>
   <body>
-    <div id="content"></div>
-    <script src="./main.js" defer></script>
+    <header>
+      <h1><span class="iconify" data-icon="mdi:list-status"></span>ToDo List</h1>
+    </header>
+    <aside id="sidebar">
+      <nav>
+        <h4>Inbox</h4>
+        <section id="inbox" class="grid10gap">
+          <div class="link active" id="inbox-inbox"><span class="iconify" data-icon="mdi:inbox-full"></span>Inbox</div>
+          <div class="link" id="inbox-today"><span class="iconify" data-icon="mdi:calendar-today"></span>Today</div>
+          <div class="link" id="inbox-week"><span class="iconify" data-icon="mdi:calendar-week"></span>This Week</div>
+        </section>
+
+        <h4>Projects</h4>
+        <section id="projectlist" class="grid10gap">
+        </section>
+
+        <h4>Tags</h4>
+        <section id="taglist" class="grid10gap">
+        </section>
+      </nav>
+    </aside>
+    <main>
+      <div id="taskbar">
+        <button id="expandall" class="taskbutton"><span class="iconify" data-icon="mdi:arrow-expand"></span>Expand All</button>
+        <button id="collapseall" class="taskbutton"><span class="iconify" data-icon="mdi:arrow-collapse"></span>Collapse All</button>
+        <button id="newtask" class="taskbutton"><span class="iconify" data-icon="mdi:playlist-plus"></span>New Task</button>
+      </div>
+      <div id="content"></div>
+    </main>    
+    <div class="newtaskmodal">
+      <div class="modal-main">
+          <header>
+              <h3><span class="iconify" data-icon="mdi:playlist-plus"></span>New Task</h3>
+          </header>
+          <div class="modal-content">
+              <label for="task-title">Title *:</label>
+              <input type="text" name="task-title" id="task-title" minlength="2" required>
+
+              <label for="task-project">Project *:</label>
+              <input list="task-projects" name="task-project" id="task-project" required>
+              <datalist id="task-projects">
+              </datalist>
+
+              <label for="task-priority">Priority *:</label>
+              <input list="task-priorities" name="task-priority" id="task-priority" required>
+              <datalist id="task-priorities">
+                <option value="Low">
+                <option value="Medium">
+                <option value="High">
+                <option value="Urgent">
+              </datalist>
+
+              <label for="task-date">Due Date:</label>
+              <input type="date" id="task-date" name="task-date">
+              
+              <label for="task-description">Description:</label>
+              <textarea id="task-description" name="task-description"></textarea>
+
+              <label for="task-tags">Tags: </label>
+              <input type="text" name="task-tags" id="task-tags" placeholder="Separate tags by spaces">
+
+              <button id="submitNewTask" class="taskbutton"><span class="iconify" data-icon="mdi:playlist-check"></span>Add Task</button>
+          </div>
+      </div>
+  </div>
   </body>
 </html>
